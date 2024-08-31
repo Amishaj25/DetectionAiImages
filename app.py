@@ -37,41 +37,4 @@ else:
     predicted_class = class_names[np.argmax(predictions)]
     st.success(f"This image most likely is: {predicted_class}")
 
-# Save the model architecture and weights
-def save_model(model):
-    # Save model architecture to JSON
-    model_json = model.to_json()
-    with open('model.json', 'w') as json_file:
-        json_file.write(model_json)
 
-    # Save model weights to HDF5
-    model.save_weights('model_weights.weights.h5')  # Ensure this extension is used
-
-# Save the model
-save_model(model)
-
-# Load the model for verification (optional)
-def load_saved_model():
-    # Load the model architecture from JSON
-    with open('model.json', 'r') as json_file:
-        model_json = json_file.read()
-    
-    # Load the model from JSON
-    loaded_model = tf.keras.models.model_from_json(model_json)
-    
-    # Load the model weights
-    loaded_model.load_weights('model_weights.weights.h5')  # Ensure this extension is used
-    
-    return loaded_model
-
-loaded_model = load_saved_model()
-
-# Save the model as a SavedModel (optional)
-def save_as_saved_model(model, export_path):
-    tf.saved_model.save(model, export_path)
-
-# Define the export path
-export_path = "C://Users//amish//Desktop/fake_image_detection_model"
-
-# Save the model as a SavedModel
-save_as_saved_model(model, export_path)
