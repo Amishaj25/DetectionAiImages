@@ -38,6 +38,3 @@ else:
     string = "This image most likely is: "+class_names[np.argmax(predictions)]
     st.success(string)
 
-
-streamlit run app.py
-
