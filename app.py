@@ -54,11 +54,13 @@ with open('model.json', 'r') as json_file:
 loaded_model = model_from_json(model_json)
 
 # Load the model weights
-loaded_model.load_weights('model_weights.h5')
+loaded_model.load_weights('model_weights.weights.h5')
 export_path = "C://Users//amish//Desktop"
 import keras
 import tensorflow as tf
 from tensorflow.keras import models , layers
 # Save the model as a SavedModel
 tf.saved_model.save(model, export_path)
+
+
 
