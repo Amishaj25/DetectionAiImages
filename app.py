@@ -14,7 +14,7 @@ def load_model():
 
 model = load_model()
 
-st.title("Fake Image Detection")
+st.title("Detection Of AI Generated Images")
 st.markdown("""
     ## Welcome to the Fake Image Detection App
     This application can be used to classify images as either 'Fake' or 'Real'.
