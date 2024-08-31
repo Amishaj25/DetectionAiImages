@@ -11,12 +11,17 @@ def load_model():
 
 model = load_model()
 
-st.write("""
-    # Fake Image Detection
-""")
+# Set up the Streamlit app
+st.set_page_config(page_title="Fake Image Detection", page_icon="📷", layout="centered")
+st.title("Fake Image Detection")
+st.markdown("""
+    ## Welcome to the Fake Image Detection App
+    This application uses a pre-trained deep learning model to classify images as either 'Fake' or 'Real'.
+    Please upload an image in JPG or PNG format, and the model will provide a prediction.
+    """)
 
 # File uploader
-file = st.file_uploader("Please upload an image file", type=["jpg", "png"])
+file = st.file_uploader("Upload an Image", type=["jpg", "png"])
 
 # Function to preprocess the image and make a prediction
 def import_and_predict(image_data, model):
@@ -28,13 +33,22 @@ def import_and_predict(image_data, model):
     return prediction
 
 if file is None:
-    st.text("Please upload an image file")
+    st.info("Please upload an image file to get a prediction.")
 else:
-    image = Image.open(file)
-    st.image(image, use_column_width=True)
-    predictions = import_and_predict(image, model)
-    class_names = ['Fake', 'Real']
-    predicted_class = class_names[np.argmax(predictions)]
-    st.success(f"This image most likely is: {predicted_class}")
+    st.image(file, caption="Uploaded Image", use_column_width=True)
+    st.write("Processing the image...")
+    
+    # Add a spinner while the prediction is being made
+    with st.spinner('Classifying...'):
+        predictions = import_and_predict(Image.open(file), model)
+        class_names = ['Fake', 'Real']
+        predicted_class = class_names[np.argmax(predictions)]
+    
+    st.success(f"This image is most likely: **{predicted_class}**")
 
+# Add footer or additional information if needed
+st.markdown("""
+    ---
+    Made with ❤️ using Streamlit.
+    """)
 
