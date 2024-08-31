@@ -3,6 +3,9 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image, ImageOps
 
+# Set up the Streamlit app
+st.set_page_config(page_title="Fake Image Detection", page_icon="📷", layout="centered")
+
 # Load the model
 @st.cache_resource
 def load_model():
@@ -11,8 +14,6 @@ def load_model():
 
 model = load_model()
 
-# Set up the Streamlit app
-st.set_page_config(page_title="Fake Image Detection", page_icon="📷", layout="centered")
 st.title("Fake Image Detection")
 st.markdown("""
     ## Welcome to the Fake Image Detection App
@@ -51,4 +52,3 @@ st.markdown("""
     ---
     Made with ❤️ using Streamlit.
     """)
-
