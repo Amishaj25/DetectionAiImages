@@ -17,7 +17,7 @@ model = load_model()
 st.title("Fake Image Detection")
 st.markdown("""
     ## Welcome to the Fake Image Detection App
-    This application uses a pre-trained deep learning model to classify images as either 'Fake' or 'Real'.
+    This application can be used to classify images as either 'Fake' or 'Real'.
     Please upload an image in JPG or PNG format, and the model will provide a prediction.
     """)
 
@@ -50,5 +50,6 @@ else:
 # Add footer or additional information if needed
 st.markdown("""
     ---
-    Made with ❤️ using Streamlit.
+    Made with ❤️ by Amisha.
+    
     """)
