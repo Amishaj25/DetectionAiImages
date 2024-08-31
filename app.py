@@ -45,7 +45,7 @@ with open('model.json', 'w') as json_file:
     json_file.write(model_json)
 
 # Save model weights to HDF5
-model.save_weights('model_weights.h5')
+model.save_weights('model_weights.weights.h5')
 from tensorflow.keras.models import model_from_json
 
 # Load the model architecture from JSON
