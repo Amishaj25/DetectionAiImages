@@ -6,7 +6,7 @@ from PIL import Image, ImageOps
 # Load the model
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model('model.hdf5')  # Ensure this file exists
+    model = tf.keras.models.load_model('model.h5')  # Ensure this file exists
     return model
 
 model = load_model()
@@ -45,7 +45,7 @@ def save_model(model):
         json_file.write(model_json)
 
     # Save model weights to HDF5
-    model.save_weights('model_weights.h5')
+    model.save_weights('model_weights.weights.h5')  # Ensure this extension is used
 
 # Save the model
 save_model(model)
@@ -60,7 +60,7 @@ def load_saved_model():
     loaded_model = tf.keras.models.model_from_json(model_json)
     
     # Load the model weights
-    loaded_model.load_weights('model_weights.h5')
+    loaded_model.load_weights('model_weights.weights.hdf5')  # Ensure this extension is used
     
     return loaded_model
 
