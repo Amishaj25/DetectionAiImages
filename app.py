@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image, ImageOps
 
 # Prevent deprecation warnings
-st.set_option('deprecation.showfileUploaderEncoding', False)
+# st.set_option('deprecation.showfileUploaderEncoding', False)
 
 # Cache the model loading for faster performance
 @st.cache(allow_output_mutation=True)
